@@ -1,0 +1,53 @@
+body{
+    background-color: rgba(225,225,225,.8);
+    font-family: Lora, Georgia, serif;
+}
+.header{
+    background-image: linear-gradient(45deg, rgba(0,0,0,0.5), rgba(0,0,0,0.85)), url(/images/header/cropped-cropped-1566672409-huge-scaled-1.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    padding-bottom: 20vw;
+    text-align: center;
+}
+.nav-item{
+    transition: .3s ease-in-out;
+    padding-bottom: 8px;
+    margin-right: 1rem;
+}
+.nav-item:hover{
+    border-bottom: 1px white solid;
+}
+.main-content{
+    margin-top: -50px;
+    padding-top: 4rem;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.contemp{
+    background-image: url(/images/Contemporary-Craftsman_02.jpg);
+    background-size: cover;
+    padding: 0px;
+    padding-bottom: 145px;
+    height: auto;
+}
+.burnt-orange{
+    background-color: #a86500;
+    font: 14px "Alegreya Sans", serif;
+    padding: 16px 24px;
+    /* border-radius: 0px; */
+    color: #ffffff;
+}
+.social{
+    color: black;
+}
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+::-ms-input-placeholder{
+    color: white;
+}
+::-webkit-input-placeholder{
+    color: white;
+}
