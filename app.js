@@ -28,11 +28,16 @@ app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', (req, res) => {
-        const title = 'Home';
-        res.render('home', {title});
-    });
+    const title = 'Home';
+    res.render('home', { title });
+});
+
+app.get('/contact', (req, res) => {
+    const title = 'Contact Us';
+    res.render('contact', {title});
+})
 
 app.all('*', (req, res, next) => {
     const title = 'Error 404';
-    res.render('404', {title});
+    res.render('404', { title });
 })
