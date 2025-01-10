@@ -4,6 +4,8 @@ const port = 3000;
 const path = require('path');
 const ejsMate = require('ejs-mate');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+
 dotenv.config();
 
 const nodemailer = require('nodemailer');
@@ -11,30 +13,25 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
     service: "Gmail",
     host: 'smtp.gmail.com',
-    port: 465  ,
+    port: 465 ,
     secure: true,
     auth: {
-        user: 'nickwiseowl@gmail.com',
+        user: process.env.email,
         pass: process.env.GmailPass,
     }
 });
 
-async function main() {
-    // send mail with defined transport object
-    const mailOptions = await transporter.sendMail({
-        from: ' "Wise Owl Plans" <nick@wiseowlplans.com>', // sender address
-        to: "nick@wiseowlplans.com", // list of receivers
-        subject: "Hello",
-        text: "This is a test?",
-        html: "<b>Hello World?</b>"
-    });
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if(error) {
-            console.error("error sending email: ", error);
-        } else{ 
-            console.log("Email sent: ", info.response);
-        }
+async function sendEmail(mail){
+    await transporter.sendMail({
+        from: mail.email, // sender address
+        to: "nick@wiseowlplans.com", // list of receivers
+        subject: `Message from ${mail.name}`,
+        text: mail.message,
+        html: `<p><b>From:</b> ${mail.name}<br>
+            <b>Email:</b> ${mail.email}<br>
+            <b>Phone:</b> ${mail.phone}<br>
+            <b>Message:</b> ${mail.message}</p>`
     });
 }
 
@@ -66,9 +63,19 @@ app.get('/', (req, res) => {
     res.render('home', { title });
 });
 
+app.get('/plans', (req, res) => {
+
+})
+
 app.get('/contact', (req, res) => {
     const title = 'Contact Us';
     res.render('contact', {title});
+})
+
+app.post('/mailer', (req, res) => {
+    const mail = req.body.contact;
+    sendEmail(mail);
+    res.redirect('/');
 })
 
 app.all('*', (req, res, next) => {

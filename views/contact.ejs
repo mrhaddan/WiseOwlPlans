@@ -8,26 +8,31 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             <form class="needs-validation" action="/mailer" method="post" novalidate>
+
                 <div class="form-floating mb-4">
-                    <input class="form-control" type="text" name="name" id="name" required>
+                    <input class="form-control" type="text" name="contact[name]" id="name" required>
                     <label for="name">Full Name</label>
                     <div class="invalid-feedback">Please enter a name</div>
                 </div>
+
                 <div class="form-floating mb-4">
-                    <input class="form-control" type="email" name="email" id="email" required>
+                    <input class="form-control" type="email" name="contact[email]" id="email" required>
                     <label class="form-label" for="email">Email</label>
                     <div class="invalid-feedback">Please enter an email</div>
                 </div>
+
                 <div class="form-floating mb-4">
-                    <input class="form-control" type="tel" name="phone" id="phone" required>
+                    <input class="form-control" type="tel" name="contact[phone]" id="phone" required>
                     <label class="form-label" for="phone">Phone</label>
                     <div class="invalid-feedback">Please enter a phone number</div>
                 </div>
+
                 <div class="form-floating mb-4">
-                    <textarea class="form-control" name="message" id="message" style="height: 100px" required> </textarea>
+                    <textarea class="form-control" name="contact[message]" id="message" style="height: 100px" required> </textarea>
                     <label class="form-label" for="message">Message</label>
                     <div class="invalid-feedback">Please enter a message</div>
                 </div>
+
                 <button class="btn burnt-orange" type="submit">SUBMIT</button>
             </form>
         </div>
