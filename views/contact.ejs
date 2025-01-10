@@ -1,8 +1,60 @@
 <%- include('partials/header') %>
 <%- include('partials/navbar') %>
 
-<div class="container bg-body-tertiary main-content mb-4 pb-4 text-center">
-    <h1>CONTACT US</h1>
+<div class="container bg-body-tertiary main-content mb-4 pb-4">
+    <h1 class="text-center">CONTACT US</h1>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="needs-validation" action="/mailer" method="post" novalidate>
+                <div class="form-floating mb-4">
+                    <input class="form-control" type="text" name="name" id="name" required>
+                    <label for="name">Full Name</label>
+                    <div class="invalid-feedback">Please enter a name</div>
+                </div>
+                <div class="form-floating mb-4">
+                    <input class="form-control" type="email" name="email" id="email" required>
+                    <label class="form-label" for="email">Email</label>
+                    <div class="invalid-feedback">Please enter an email</div>
+                </div>
+                <div class="form-floating mb-4">
+                    <input class="form-control" type="tel" name="phone" id="phone" required>
+                    <label class="form-label" for="phone">Phone</label>
+                    <div class="invalid-feedback">Please enter a phone number</div>
+                </div>
+                <div class="form-floating mb-4">
+                    <textarea class="form-control" name="message" id="message" style="height: 100px" required> </textarea>
+                    <label class="form-label" for="message">Message</label>
+                    <div class="invalid-feedback">Please enter a message</div>
+                </div>
+                <button class="btn burnt-orange" type="submit">SUBMIT</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+</div>
+
+<script>
+    (() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 
 <%- include('partials/footer') %>
