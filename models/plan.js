@@ -10,12 +10,12 @@ const PlanSchema = new Schema({
         type: String,
         required: [true, 'plan must have a name']
     },
-    price: {
+    Regularprice: {
         type: Number,
         required: [true, 'price is required']
     },
     category: String,
-    archStyle: {
+    ArchitecturalStyle: {
         type: String,
         required: [true, 'must have architectural style']
     },
@@ -34,12 +34,12 @@ const PlanSchema = new Schema({
         type: Number,
         min: 0
     },
-    width: {
+    Width: {
         type: Number,
         min: 0,
         required: [true, 'must input width']
     },
-    depth: {
+    Depth: {
         type: Number,
         min: 0,
         required: [true, 'must input depth']

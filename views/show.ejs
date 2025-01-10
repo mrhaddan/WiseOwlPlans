@@ -1,8 +1,30 @@
 <%- include('partials/header') %>
 <%- include('partials/navbar') %>
 
-<div class="container">
-    <p><%= p.id %></p>
+<div class="container bg-body-tertiary mb-4 pb-5 main-content">
+    <div class="row pb-5">
+        <div class="col-md-6 ms-5 pb-5 overflow-y-scroll">
+            <h1>
+                <%= p.Name %>
+            </h1>
+            <h3>$<%= p.Regularprice %></h3>
+            <p><%= p.SquareFeet %> Square Feet</p>
+            <p>Architectural Style: <%= p.ArchitecturalStyle %>
+            </p>
+            <p>Bedrooms: <%= p.Bedrooms %> | Baths: <%= p.Bathrooms %>
+            </p>
+            <p>Width: <%= p.Width %> | Depth: <%= p.Depth %></p>
+            <p>Primary Suite on <%= p.MasterBedroomLocation %> level</p>
+            <p><%= p.GarageSize %> Car Garage</p>
+        </div>
+        <div class="col-md-5">
+            <% for( let i of p.Images ) { %>
+                <a href="<%= i %>">
+                <img src='<%= i %>' width="100%" alt="image">
+            </a>
+                <% } %>
+        </div>
+    </div>
 </div>
 
 <%- include('partials/footer') %>

@@ -55,3 +55,7 @@ body{
     position: sticky;
     margin-top: 0px;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
