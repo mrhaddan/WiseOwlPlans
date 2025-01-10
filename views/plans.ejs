@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="container mt-4">
+    <div class="row">
+        <% for( let p of plan ) { %>
+            <div class="card mx-3 my-3 px-0" style="width: 18rem">
+                <img src="<%= p.Images[0] %>" alt="<%= p.Images[0] %>" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><%= p.Name %></h5>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    Bath: <%= p.Bathrooms %> | Bed: <%= p.Bedrooms %> | Levels: <%= p.Levels %>
+                </div>
+            </div>
+
+        <% } %>
+    </div>
+</div>
+    
+
+
+<%- include('partials/footer') %>

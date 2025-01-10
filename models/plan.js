@@ -6,7 +6,7 @@ const PlanSchema = new Schema({
         type: String,
         required: [true, 'name cannot be blank']
     },
-    name: {
+    Name: {
         type: String,
         required: [true, 'plan must have a name']
     },
@@ -26,11 +26,11 @@ const PlanSchema = new Schema({
         max: 10000,
         required: [true, 'must have square foot']
     },
-    bed: {
+    Bedrooms: {
         type: Number,
         min: 0
     },
-    bath: {
+    Bathrooms: {
         type: Number,
         min: 0
     },
@@ -44,7 +44,7 @@ const PlanSchema = new Schema({
         min: 0,
         required: [true, 'must input depth']
     },
-    levels: {
+    Levels: {
         type: Number,
         min: 1,
         required: [true, 'must input levels']
