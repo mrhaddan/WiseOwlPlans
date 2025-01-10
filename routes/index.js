@@ -52,6 +52,12 @@ router.get('/plans', async (req, res) => {
     res.render('plans', {plan, title});
 });
 
+router.get('/plans/:id', async (req, res, next) => {
+    const title = 'Plan Detail'
+    const p = await Plan.findById(req.params.id);
+    res.render('show', {p, title});
+})
+
 router.post('/mailer', (req, res) => {
     const mail = req.body.contact;
     console.log(mail);

@@ -20,7 +20,7 @@ const PlanSchema = new Schema({
         required: [true, 'must have architectural style']
     },
     Images: [String],
-    sf: {
+    SquareFeet: {
         type: Number,
         min: 0,
         max: 10000,
@@ -49,9 +49,13 @@ const PlanSchema = new Schema({
         min: 1,
         required: [true, 'must input levels']
     },
-    garage: {
+    GarageSize: {
         type: Number,
         min: 0
+    },
+    MasterBedroomLocation: {
+        type: String,
+        required: [true, 'where is the master bedroom?']
     }
 })
 
