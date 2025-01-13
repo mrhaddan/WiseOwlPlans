@@ -7,10 +7,21 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const Plan = require('./models/plan');
 const indexRouter = require('./routes/index');
+const dbURL= process.env.MONGO_URI;
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(dbURL);
+
+const store = MongoStore.create({
+    mongoUrl: dbURL,
+    touchAfter: 24*60*60, // refreshes page per day
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error:"));
