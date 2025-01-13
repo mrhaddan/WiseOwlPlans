@@ -7,13 +7,13 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const Plan = require('./models/plan');
 const indexRouter = require('./routes/index');
-const dbURL= process.env.MONGO_URI;
+// const dbURL= process.env.MONGO_URI;
 // const session = require('express-session');
 // const MongoStore = require('connect-mongo');
 
 dotenv.config();
 
-mongoose.connect(process.env.LOCAL_MONGO);
+// mongoose.connect(process.env.MONGO_URI);
 
 // const store = MongoStore.create({
 //     mongoUrl: dbURL,
@@ -37,11 +37,11 @@ mongoose.connect(process.env.LOCAL_MONGO);
 
 // app.use(session(sessionConfig));
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, "connection error:"));
-db.once("open", () => {
-    console.log('database connected');
-})
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, "connection error:"));
+// db.once("open", () => {
+//     console.log('database connected');
+// })
 
 app.use((req, res, next) => {
     next();
