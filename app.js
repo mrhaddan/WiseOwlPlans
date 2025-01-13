@@ -23,6 +23,20 @@ const store = MongoStore.create({
     }
 });
 
+const sessionConfig = {
+    name: 'session',
+    secret: 'thisshouldbeabettersecret!',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expres: Date.now() + 1000*60*60*24*7,
+        maxAge: 1000*60*60*24*7
+    }
+}
+
+app.use(session(sessionConfig));
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error:"));
 db.once("open", () => {
