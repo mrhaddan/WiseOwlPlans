@@ -8,34 +8,34 @@ const mongoose = require('mongoose');
 const Plan = require('./models/plan');
 const indexRouter = require('./routes/index');
 const dbURL= process.env.MONGO_URI;
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
+// const session = require('express-session');
+// const MongoStore = require('connect-mongo');
 
 dotenv.config();
 
-mongoose.connect(dbURL);
+mongoose.connect(process.env.LOCAL_MONGO);
 
-const store = MongoStore.create({
-    mongoUrl: dbURL,
-    touchAfter: 24*60*60, // refreshes page per day
-    crypto: {
-        secret: 'thisshouldbeabettersecret!'
-    }
-});
+// const store = MongoStore.create({
+//     mongoUrl: dbURL,
+//     touchAfter: 24*60*60, // refreshes page per day
+//     crypto: {
+//         secret: 'thisshouldbeabettersecret!'
+//     }
+// });
 
-const sessionConfig = {
-    name: 'session',
-    secret: 'thisshouldbeabettersecret!',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        httpOnly: true,
-        expres: Date.now() + 1000*60*60*24*7,
-        maxAge: 1000*60*60*24*7
-    }
-}
+// const sessionConfig = {
+//     name: 'session',
+//     secret: 'thisshouldbeabettersecret!',
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: {
+//         httpOnly: true,
+//         expres: Date.now() + 1000*60*60*24*7,
+//         maxAge: 1000*60*60*24*7
+//     }
+// }
 
-app.use(session(sessionConfig));
+// app.use(session(sessionConfig));
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error:"));
