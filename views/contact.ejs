@@ -1,13 +1,13 @@
 <%- include('partials/header') %>
 <%- include('partials/navbar') %>
 
-<div class="container bg-body-tertiary main-content mb-4 pb-4">
+<div class="container bg-body-tertiary main-content" style="margin-bottom: 2rem; padding-bottom: 10rem;">
     <h1 class="text-center">CONTACT US</h1>
 
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-6">
-            <form class="needs-validation" action="/mailer" method="post" novalidate>
+            <form class="needs-validation" id="contactForm" onsubmit="return clearFormOnSubmit(this);" action="/mailer" method="post" novalidate>
 
                 <div class="form-floating mb-4">
                     <input class="form-control" type="text" name="contact[name]" id="name" required>
@@ -32,9 +32,28 @@
                     <label class="form-label" for="message">Message</label>
                     <div class="invalid-feedback">Please enter a message</div>
                 </div>
-
-                <button class="btn burnt-orange" type="submit">SUBMIT</button>
+                <div class="g-recaptcha" data-callback="captchaFilled" data-sitekey="6LfFbrcqAAAAAM92XrlvGQ1yadGGT-Z0qXWnFyHu"></div>
+                <button class="btn burnt-orange" type="submit" id="submit" data-bs-toggle="modal" data-bs-target="#formsubmit" disabled>SUBMIT</button>
             </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="formsubmit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Message sent successfully</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
         </div>
         <div class="col-md-1"></div>
         <div class="col-md">
@@ -72,6 +91,16 @@
     }, false)
   })
 })()
+
+function captchaFilled(){
+    document.getElementById('submit').removeAttribute('disabled');
+}
+
+function clearFormOnSubmit(form){
+    form.reset(); // clear all form fields
+
+    return false;
+}
 </script>
 
 <%- include('partials/footer') %>

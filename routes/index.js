@@ -62,7 +62,7 @@ router.post('/mailer', (req, res) => {
     const mail = req.body.contact;
     console.log(mail);
     sendEmail(mail);
-    res.redirect('/');
+    // res.redirect('/contact');
 })
 
 module.exports = router;
