@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const Plan = require('../models/plan');
+const Plan = require('../models/plan');
 const methodOverride = require('method-override');
 const dotenv = require('dotenv');
 
@@ -48,41 +48,13 @@ router.get('/contact', (req, res) => {
 
 router.get('/plans', async (req, res) => {
     const title = 'Plans';
-    // const plans = await Plan.find().limit(10);
-    const plans = [{
-        id: 12,
-        Name: 'Nick',
-        Regularprice: 1000,
-        SquareFeet: 12,
-        ArchitecturalStyle: 'Sexy',
-        Bedrooms: 1,
-        Bathrooms: 1,
-        Width: 12,
-        Depth: 12,
-        MasterBedroomLocation: 'Main',
-        GarageSize: 3,
-        Images: []
-    }];
+    const plans = await Plan.find().limit(10);
     res.render('plans', {plans, title});
 });
 
 router.get('/plans/:id', async (req, res, next) => {
     const title = 'Plan Detail'
-    // const p = await Plan.findById(req.params.id);
-    const p = {
-        id: 12,
-        Name: 'Nick',
-        Regularprice: 1000,
-        SquareFeet: 12,
-        ArchitecturalStyle: 'Sexy',
-        Bedrooms: 1,
-        Bathrooms: 1,
-        Width: 12,
-        Depth: 12,
-        MasterBedroomLocation: 'Main',
-        GarageSize: 3,
-        Images: []
-    };
+    const p = await Plan.findById(req.params.id);
     res.render('show', {p, title});
 })
 
