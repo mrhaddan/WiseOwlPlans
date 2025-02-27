@@ -75,14 +75,7 @@ router.post('/mailer', (req, res) => {
         req.flash('info', 'Something went wrong');
         res.redirect('/contact');
     }
-    
-    
 })
-
-router.get('/admin/build', (req, res) => {
-    const title = 'New Plan';
-    res.render('admin/build', {title});
-});
 
 //POST
 router.post('/plans', async (req, res, next) => {
@@ -100,6 +93,5 @@ router.get('/fakeUser', async (req, res) => {
     res.send(newUser);
 })
 
-// Register form - GET
 
 module.exports = router;

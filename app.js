@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const Plan = require('./models/plan');
 const indexRouter = require('./routes/index');
 const userRouter = require('./routes/users');
+const adminRouter = require('./routes/admin');
 
 const flash = require('connect-flash');
 
@@ -93,7 +94,8 @@ app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 
 app.use('/', indexRouter);
-app.use('/users', userRouter)
+app.use('/users', userRouter);
+app.use('/admin', adminRouter);
 
 // app.all('*', (req, res, next) => {
 //     const title = 'Error 404';
