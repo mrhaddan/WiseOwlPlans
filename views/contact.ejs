@@ -3,11 +3,21 @@
 
 <div class="container bg-body-tertiary main-content" style="margin-bottom: 2rem; padding-bottom: 10rem;">
     <h1 class="text-center">CONTACT US</h1>
-
+    <% if (messages != '') { %>
+        <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div class="alert alert-info text-center" width="50%">
+                <%= messages %>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <% } %>
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-6">
-            <form class="needs-validation" id="contactForm" onsubmit="return clearFormOnSubmit(this);" action="/mailer" method="post" novalidate>
+            <form class="needs-validation" id="contactForm" action="/mailer" method="post" novalidate>
 
                 <div class="form-floating mb-4">
                     <input class="form-control" type="text" name="contact[name]" id="name" required>
@@ -37,7 +47,7 @@
             </form>
 
             <!-- Modal -->
-            <div class="modal fade" id="formsubmit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="formsubmit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -52,14 +62,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
   
         </div>
         <div class="col-md-1"></div>
         <div class="col-md">
             <address>
                 <strong>Address:</strong><br />
-                <a style="color: #a86500" href="https://maps.app.goo.gl/iAcNSzy3MpVk6jjX8">
+                <a style="color: #a86500" href="https://maps.app.goo.gl/iAcNSzy3MpVk6jjX8" target="_blank">
                 4800 NW Camas Meadows Drive Suite 290<br />
                 Camas, WA</a>
             </address>
@@ -96,11 +106,11 @@ function captchaFilled(){
     document.getElementById('submit').removeAttribute('disabled');
 }
 
-function clearFormOnSubmit(form){
-    form.reset(); // clear all form fields
+// function clearFormOnSubmit(form){
+//     form.reset(); // clear all form fields
 
-    return false;
-}
+//     return false;
+// }
 </script>
 
 <%- include('partials/footer') %>

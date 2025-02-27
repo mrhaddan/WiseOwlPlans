@@ -7,6 +7,13 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const Plan = require('./models/plan');
 const indexRouter = require('./routes/index');
+const userRouter = require('./routes/users');
+
+const flash = require('connect-flash');
+
+const passport = require('passport');
+const LocalStrat = require('passport-local');
+const User = require('./models/user')
 
 // Mongo SessionStore stuff
 const dbURL= process.env.MONGO_URI;
@@ -41,7 +48,19 @@ const sessionConfig = {
 }
 
 app.use(session(sessionConfig));
+app.use(flash());
 
+// Start Authentication middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrat(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+// End Authentication
 store.on("error", e => {
     console.log("Session Store Error", e);
 })
@@ -74,6 +93,7 @@ app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 
 app.use('/', indexRouter);
+app.use('/users', userRouter)
 
 // app.all('*', (req, res, next) => {
 //     const title = 'Error 404';

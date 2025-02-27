@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const PlanSchema = new Schema({
     SKU: {
         type: String,
-        required: [true, 'name cannot be blank']
+        required: [true, 'name cannot be blank'],
+        unique: true
     },
     Name: {
         type: String,
@@ -14,9 +15,13 @@ const PlanSchema = new Schema({
         type: Number,
         required: [true, 'price is required']
     },
-    category: String,
+    category: {
+        type: String,
+        enum: ['Residence', 'ADU', 'Shop']
+    },
     ArchitecturalStyle: {
         type: String,
+        enum: ['Contemporary', 'Craftsman', 'European', 'Northwest', 'Prairie', 'Traditional'],
         required: [true, 'must have architectural style']
     },
     Images: [String],
@@ -55,6 +60,7 @@ const PlanSchema = new Schema({
     },
     MasterBedroomLocation: {
         type: String,
+        enum: ['Main', 'Upper'],
         required: [true, 'where is the master bedroom?']
     }
 })

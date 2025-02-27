@@ -1,0 +1,74 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container">
+    <div class="row text-center mt-3">
+        <h1>CREATE</h1>
+    </div>
+    
+    <form class="needs-validation mb-5" enctype="multipart/form-data" action="/plans" method="POST">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="SKU">SKU</label>
+                <input type="text" class="form-control mb-3" name="plan[SKU]" id="SKU" required>
+                
+                <label for="Price">Price</label>
+                <input type="number" class="form-control mb-3" name="plan[Regularprice]" id="Price" required>
+
+                <label for="archStyle">Architectural Style</label>
+                <select class="form-select mb-3" name="plan[ArchitecturalStyle]" id="archStyle" required>
+                    <option value="Contemporary">Contemporary</option>
+                    <option value="Craftsman">Craftsman</option>
+                    <option value="European">European</option>
+                    <option value="Northwest">Northwest</option>
+                    <option value="Prairie">Prairie</option>
+                    <option value="Traditional">Traditional</option>
+                </select>
+
+                <label for="beds">Bedrooms</label>
+                <input type="number" class="form-control mb-3" name="plan[Bedrooms]" id="beds" required>
+
+                <label for="width">Width</label>
+                <input type="number" class="form-control mb-3" name="plan[Width]" id="width" required>
+
+                <label for="levels">Levels</label>
+                <input type="number" class="form-control mb-3" name="plan[Levels]" id="levels" required>
+
+                <label for="master">Primary Suite Location</label>
+                <select class="form-select mb-3" name="plan[MasterBedroomLocation]" id="master" required>
+                    <option value="Main">Main</option>
+                    <option value="Upper">Upper</option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="Name">Name</label>
+                <input type="text" class="form-control mb-3" name="plan[Name]" id="Name" required>
+
+                <label for="Category">Category</label>
+                <select class="form-select mb-3" name="plan[category]" id="Category" required>
+                    <option value="Residence">Residence</option>
+                    <option value="ADU">ADU</option>
+                    <option value="Shop">Shop</option>
+                </select>
+
+                <label for="Sqft">Square Feet</label>
+                <input type="number" class="form-control mb-3" name="plan[SquareFeet]" id="Sqft" required>
+
+                <label for="baths">Bathrooms</label>
+                <input type="number" class="form-control mb-3" name="plan[Bathrooms]" id="baths" required>
+
+                <label for="depth">Depth</label>
+                <input type="number" class="form-control mb-3" name="plan[Depth]" id="depth" required>
+
+                <label for="garage">Garage Size</label>
+                <input type="number" class="form-control mb-5" name="plan[GarageSize]" id="garage" required>
+
+            </div>
+        </div>
+
+        <input type="submit" class="btn btn-primary mb-3" value="Submit">
+    </form>
+
+</div>
+
+

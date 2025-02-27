@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+
+<form class="needs-validation mb-5" action="/users/register" method="POST">
+    <div class="container">
+        <% if (messages != '') { %>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="alert alert-danger text-center">
+                        <%= messages %>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <h1>REGISTER</h1>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" name="email" id="email" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <label for="username">Username</label>
+                <input class="form-control" type="text" name="username" id="username" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+
+                <label for="password">Password</label>
+                <input  class="form-control" type="password" name="password" id="password" required>
+                <input class="btn btn-primary" type="submit" value="Register">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
